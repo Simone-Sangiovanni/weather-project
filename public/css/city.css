@@ -1,0 +1,171 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: whitesmoke;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 20px;
+}
+
+.title {
+    padding: 10px;
+    margin: 5px;
+    background: darkblue;
+    color: whitesmoke;
+    border-radius: 5px;
+}
+
+.navigateDays {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 11vw;
+    min-width: 150px;
+    padding: 10px;
+    margin: 3px;
+    background: #72cae2;
+    transition: 0.2s;
+}
+
+.day:hover {
+    background: gray;
+    color: black;
+}
+
+.selected {
+    display: unset;
+    width: 20vw;
+    background: #000080;
+    color: whitesmoke;
+    border-radius: 5px;
+}
+
+.selected:hover {
+    background: #000080;
+    color: whitesmoke;
+}
+
+.dayCondition {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.conditionToday {
+    display: inline;
+    padding: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+table {
+    margin: 5px;
+    width: 100%;
+}
+
+table,
+th,
+td {
+    border: 2px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+td {
+    width: 10%;
+}
+
+th {
+    padding: 5px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+tr:nth-child(even) {
+    background: lightgray;
+}
+
+.condition img {
+    width: 45px;
+}
+
+
+
+@media screen and (max-width: 650px){
+
+    .wind {
+        display: none;
+    }
+
+    .conditionToday {
+        display: none;
+    }
+    
+}
+
+@media screen and (max-width: 570px){
+    
+    .humidity {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 470px){
+
+    .feelsLike {
+        display: none;
+    }
+
+    .day {
+        min-width: fit-content;
+        padding: 10px 5px;
+    }
+    
+    .temperatureRange {
+        display: none;
+    }
+
+    .selected {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .selected .conditionToday {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 405px){
+
+    table {
+        margin: 5px 0;
+        width: 100vw;
+    }
+
+    td,
+    th {
+        font-size: 4vw;
+        padding: 0 5px;
+    }
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Sangiovanni Simone">
+    <meta name="description" content="Page that contain a list of the city with the same name">
+
+    <link rel="icon" type="image/x-icon" href="/img/logo.png">
+    <link rel="stylesheet" href="/css/cityList.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <%- include('partials/brand'); %> 
+
+            <div class="list">
+                <% for(let pos=0; pos < length; pos++) { %>
+                    <form name="form<%=pos%>" action="/cityList/<%= cityName %> " method="POST" id="<%= pos %>">
+                        <button type="submit" class="row" name="cityId" value="<%= content[pos].id %>">
+                            <%= content[pos].name %>,
+                            <%= content[pos].country %>,
+                            <%= content[pos].region %>
+                        </button>
+                    </form>
+                <% } %>
+            </div>
+        </div>
+    </main>
+    <%- include('partials/footer'); %> 
+
+    <script src="https://kit.fontawesome.com/79269919fb.js" crossorigin="anonymous"></script>
+</body>
+</html>

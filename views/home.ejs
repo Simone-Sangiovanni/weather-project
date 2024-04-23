@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Sangiovanni Simone">
+    <meta name="description" content="Website that display weather data">
+    <meta name="keywords" content="Weather, Meteo, Forecast">
+
+    <link rel="icon" type="image/x-icon" href="/img/logo.png">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/footer.css">
+
+    <title>
+        <%= title %>
+    </title>
+</head>
+<body>
+    <main>
+        <div class="container">
+            <%- include('partials/brand'); %> 
+            <%- include('partials/formSearchCity'); %> 
+        </div>
+    </main>
+    <%- include('partials/footer'); %> 
+
+    <script src="/js/search.js"></script>
+    <script src="https://kit.fontawesome.com/79269919fb.js" crossorigin="anonymous"></script>
+</body>
+</html>

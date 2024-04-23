@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Sangiovanni Simone">
+    <meta name="description" content="Page that contain all the weather data of the serched city">
+
+    <link rel="icon" type="image/x-icon" href="/img/logo.png">
+    <link rel="stylesheet" href="/css/city.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <%- include('partials/navbar'); %>
+    <main>
+        <h1 class="title">
+            <%= cityName %>
+        </h1>
+
+        <div class="navigateDays">
+            <% for(let i=0; i<forecastDayLength; i++) { %>
+                <% if(i==0) { %> 
+                    <div id="<%= i %>" class="day selected">
+                        <div> <%= forecastDay[i].date %> </div>
+                        <div class="dayCondition">
+                            <img src="<%= forecastDay[i].day.condition.icon %> " alt="conditionIcon">
+                            <div class="conditionToday"><%= forecastDay[i].day.condition.text %></div>
+                        </div>
+                        <div class="temperatureRange"> <%= forecastDay[i].day.mintemp_c %> °C - <%= forecastDay[i].day.maxtemp_c %> °C</div>
+                    </div>
+                <% } else { %> 
+                    <div id="<%= i %>" class="day" onclick="select(this.id)">
+                        <div> <%= forecastDay[i].date %> </div>
+                        <div class="dayCondition">
+                            <img src="<%= forecastDay[i].day.condition.icon %> " alt="conditionIcon"> 
+                            <div class="conditionToday hidden"><%= forecastDay[i].day.condition.text %></div>
+                        </div>
+                        <div class="temperatureRange"> <%= forecastDay[i].day.mintemp_c %> °C - <%= forecastDay[i].day.maxtemp_c %> °C</div>
+                    </div>
+                <% } %> 
+            <% } %> 
+        </div>
+
+        <% for(let i=0; i<forecastDayLength; i++) { %>
+                <% if(i==0) { %>
+                    <table id="table<%= i %>" class="activeTable">
+                        <thead>
+                            <tr>
+                                <th class="hour">Hour</th>
+                                <th class="temperature">Temperature</th>
+                                <th class="feelsLike">Feels like</th>
+                                <th class="condition">Condition</th>
+                                <th class="wind">Wind</th>
+                                <th class="precipitation">Precipitation</th>
+                                <th class="humidity">Humidity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let j = 0; j<24; j++) { %>
+                                <tr>
+                                    <td class="hour"><%= forecastDay[i].hour[j].time %> </td>
+                                    <td class="temperature"><%= forecastDay[i].hour[j].temp_c %>°C </td>
+                                    <td class="feelsLike"><%= forecastDay[i].hour[j].feelslike_c %>°C </td>
+                                    <td class="condition"><img src="<%= forecastDay[i].hour[j].condition.icon%>" alt="<%= forecastDay[i].hour[j].condition.text%>"></td>
+                                    <td class="wind"><%= forecastDay[i].hour[j].wind_kph %>km/h </td>
+                                    <td class="precipitation"><%= forecastDay[i].hour[j].precip_mm %>mm </td>
+                                    <td class="humidity"><%= forecastDay[i].hour[j].humidity %>% </td>
+                                </tr>
+                            <% } %>  
+                        </tbody>
+                    </table>
+                <% } else { %>
+                    <table id="table<%= i %>" class="hidden">
+                        <thead>
+                            <tr>
+                                <th class="hour">Hour</th>
+                                <th class="temperature">Temperature</th>
+                                <th class="feelsLike">Feels like</th>
+                                <th class="condition">Condition</th>
+                                <th class="wind">Wind</th>
+                                <th class="precipitation">Precipitation</th>
+                                <th class="humidity">Humidity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let j = 0; j<24; j++) { %>
+                                <tr>
+                                    <td class="hour"><%= forecastDay[i].hour[j].time %> </td>
+                                    <td class="temperature"><%= forecastDay[i].hour[j].temp_c %>°C </td>
+                                    <td class="feelsLike"><%= forecastDay[i].hour[j].feelslike_c %>°C </td>
+                                    <td class="condition"><img src="<%= forecastDay[i].hour[j].condition.icon%>" alt="<%= forecastDay[i].hour[j].condition.text%>"></td>
+                                    <td class="wind"><%= forecastDay[i].hour[j].wind_kph %>km/h </td>
+                                    <td class="precipitation"><%= forecastDay[i].hour[j].precip_mm %>mm </td>
+                                    <td class="humidity"><%= forecastDay[i].hour[j].humidity %>% </td>
+                                </tr>
+                            <% } %>  
+                        </tbody>
+                    </table>
+                <% } %>
+        <% } %>  
+    </main>
+    <%- include('partials/footer'); %>
+
+    <script src="/js/toggleSearchBox.js"></script>
+    <script src="/js/displayDayData.js"></script>
+    <script src="/js/search.js"></script>
+    <script src="https://kit.fontawesome.com/79269919fb.js" crossorigin="anonymous"></script>
+</body>
+</html>

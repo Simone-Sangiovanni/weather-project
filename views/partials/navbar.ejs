@@ -1,0 +1,17 @@
+<nav>
+    <div class="container-nav">
+        <div class="brand">
+            <a class="goHome" href="/">
+                <img src="/img/logo.png" alt="logo">
+                LiveWeather
+            </a>
+        </div>
+        <i id="openSideBar" class="fa-solid fa-bars" onclick="toggleMenu()"></i>
+    </div>
+    
+    <div class="navigationMenu">
+        <div id="searchContainer" class="hideForm">
+            <%- include('./formSearchCity'); %> 
+        </div>
+    </div>
+</nav>
